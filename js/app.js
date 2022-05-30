@@ -13,18 +13,20 @@ let availableQuestions = []
 let availableOptions = []
 let correctAnswers = 0
 let attempt = 0
-var getTopic = startQuiz.getTopic
+var getTopic = quizP
 const totalQuestions = getTopic.length
 
 //Push the quetions into availableQuestions array
-function setAvailableQuestions() {
+function setAvailableQuestions(topic) {
+  const totalQuestions = topic.length
   for (let i = 0; i < totalQuestions; i++) {
     availableQuestions.push(getTopic[i])
   }
 }
 
 //set question number and question and options
-function getNewQuestion() {
+function getNewQuestion(topic) {
+  const totalQuestions = topic.length
   //set question number
   questionNumber.innerHTML =
     'Question ' + (questionCounter + 1) + ' of ' + totalQuestions
@@ -125,12 +127,14 @@ function updateAnswerIndicator(markType) {
   answerIndicatorContainer.children[questionCounter - 1].classList.add(markType)
 }
 
-function next() {
+function next(topic) {
+  const totalQuestions = topic.length
   if (questionCounter === totalQuestions) {
     console.log('Quiz Over!')
     quizOver()
   } else {
-    getNewQuestion()
+    console.log('working')
+    getNewQuestion(topic)
   }
 }
 
@@ -143,6 +147,7 @@ function quizOver() {
 }
 
 function quizResult() {
+  const totalQuestions = topic.length
   resultBox.querySelector('.tot-question').innerHTML = totalQuestions
   resultBox.querySelector('.tot-attempt').innerHTML = attempt
   resultBox.querySelector('.tot-correct').innerHTML = correctAnswers
@@ -159,14 +164,13 @@ function startQuiz(topic) {
   homeBox.classList.add('hide')
   // shows quiz box
   quizBox.classList.remove('hide')
-  getTopic = topic
 
   //First we will set all questions in avaibleQuestins array
-  setAvailableQuestions()
+  setAvailableQuestions(topic)
   //Secondly we will call getNewQuestion() function
-  getNewQuestion()
+  getNewQuestion(topic)
   // to create answer indicators
-  answerIndicator()
+  answerIndicator(topic)
 }
 
 function resetQuiz() {
