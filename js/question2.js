@@ -1,6 +1,6 @@
-//Java Questions
-
-const quizJ = [
+//Array of objects(qustions)
+//C++ questions
+const quizCC = [
   {
     q: 'Is HTML a programming language?',
     options: ['Yes', 'No'],
@@ -14,5 +14,10 @@ const quizJ = [
       'Javascript is barely used anymore since Java came out.',
     ],
     answer: 0,
+  },
+  {
+    q: 'What is the newest version of HTML being developed?',
+    options: ['HTML4', 'HTML6', 'HTML5', 'There is only one type of HTML'],
+    answer: 2,
   },
 ]
